@@ -107,7 +107,7 @@ if(strlen($_SESSION['alogin'])=="")
                                         <span class="number counter">
                                             <?php echo htmlentities($totalclasses);?>
                                         </span>
-                                        <span class="name">Total classes listed</span>
+                                        <span class="name">Total classess listed</span>
                                         <span class="bg-icon"><i class="fa fa-bank"></i></span>
                                     </a>
                                     <!-- /.dashboard-stat -->
