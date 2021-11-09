@@ -21,6 +21,8 @@
                     <span class="">Appearance</span>
                 </li>  
 
+
+                <!-- included student information connect add-student -->
                 <li class="has-children">
                     <a href="#"><i class="fa fa-users"></i> <span>Students</span> <i
                             class="fa fa-angle-right arrow"></i></a>
@@ -28,6 +30,18 @@
                         <li><a href="add-students.php"><i class="fa fa-bars"></i> <span>Add Students</span></a></li>
                         <li><a href="manage-students.php"><i class="fa fa fa-server"></i> <span>Manage
                                     Students</span></a>
+                        </li>
+                    </ul>
+                </li>
+
+                <!-- connect the staff personal information -->
+                <li class="has-children">
+                    <a href="#"><i class="fa fa-users"></i> <span>Staff</span> <i
+                            class="fa fa-angle-right arrow"></i></a>
+                    <ul class="child-nav">
+                        <li><a href="add-students.php"><i class="fa fa-bars"></i> <span>Add Staff</span></a></li>
+                        <li><a href="manage-students.php"><i class="fa fa fa-server"></i> <span>Manage
+                                    Staff personal information</span></a>
                         </li>
                     </ul>
                 </li>

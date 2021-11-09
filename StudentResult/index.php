@@ -48,10 +48,11 @@ echo "<script type='text/javascript'> document.location = 'dashboard.php'; </scr
 
             <div class="">
                 <div class="row">
- <h1 align="center">Student Result Management System</h1>
-                    <div class="col-lg-6 visible-lg-block">
-
-<                  section class="section">
+                   <h1 align="center">Acreditation Management System</h1>
+                   
+<!-- student section  -->
+                 <!-- <div class="col-lg-6 visible-lg-block">                        
+                 <section class="section">
                             <div class="row mt-40">
                                 <div class="col-md-10 col-md-offset-1 pt-50">
 
@@ -84,19 +85,20 @@ echo "<script type='text/javascript'> document.location = 'dashboard.php'; </scr
 
                                                 </div>
                                             </div>
-                                            <!-- /.panel -->
+                                            
 
                                         </div>
-                                        <!-- /.col-md-11 -->
-                                    </div>
+                                        /.col-md-11
+                                    <!-- </div> -->
                                     <!-- /.row -->
-                                </div>
+                                <!-- </div> -->
                                 <!-- /.col-md-12 -->
-                            </div>
+                            <!-- </div> -->
                             <!-- /.row -->
-                        </section>
-                    </div>
-                    <div class="col-lg-6">
+                        <!-- </section> -->
+                    <!-- </div> --> --> -->
+                    <!-- admin section  -->
+                    <div class="col-lg-6" >
                         <section class="section">
                             <div class="row mt-40">
                                 <div class="col-md-10 col-md-offset-1 pt-50">
@@ -154,8 +156,9 @@ echo "<script type='text/javascript'> document.location = 'dashboard.php'; </scr
                             <!-- /.row -->
                         </section>
 
-                    </div>
+                    
                     <!-- /.col-md-6 -->
+</div>
                 </div>
                 <!-- /.row -->
             </div>
