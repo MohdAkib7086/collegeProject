@@ -127,7 +127,7 @@ if(strlen($_SESSION['alogin'])=="")
                                         <span class="number counter">
                                             <?php echo htmlentities($totalresults);?>
                                         </span>
-                                        <span class="name">Results Declared</span>
+                                        <span class="name">Result Declared</span>
                                         <span class="bg-icon"><i class="fa fa-file-text"></i></span>
                                     </a>
                                     <!-- /.dashboard-stat -->
