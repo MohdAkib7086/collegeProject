@@ -13,10 +13,18 @@
       <link rel="stylesheet" href="css/prism/prism.css" media="screen">
       <link rel="stylesheet" href="css/select2/select2.min.css">
       <link rel="stylesheet" href="css/main.css" media="screen">
+      <link rel="stylesheet" href="css/form.css">
       <script src="js/modernizr/modernizr.min.js"></script>
 </head>
 
 <body class="top-navbar-fixed">
+
+<?php
+
+
+?>
+
+
   <div class="main-wrapper">
 
     <!-- ========== TOP NAVBAR ========== -->
@@ -123,15 +131,49 @@
                       </div>
 
 
-
+                      <h5>corresponding address:</h5>
                       <div class="form-row">
                         <div class="col-md-3 mb-3">
-                          <label for="comment">Corresponding Address1:</label>
-                          <textarea class="form-control" rows="5" id="comment"></textarea>
+                          <textarea class="form-control" rows="5" placeholder="Adress"></textarea>
                         </div>
+                        <div class="col-md-2">
+                        <h5>City:</h5>
+                          <input type="text" class="form-control" placeholder="city" required>
+                        </div>
+                        <div class="col-md-2">
+                        <h5>Pin:</h5>
+                          <input type="text" class="form-control" placeholder="Pin" required>
+                        </div>
+                        <div class="col-md-2">
+                        <h5>Telephone:</h5>
+                          <input type="text" class="form-control" placeholder="Telephone" required>
+                        </div>
+                        <div class="col-md-3">
+                        <h5>mobile:</h5>
+                          <input type="text" class="form-control" placeholder="Mobile" required>
+                        </div>
+                      </div>
+
+                      <h5>Permanent address:</h5>
+                      <div class="form-row">
                         <div class="col-md-3 mb-3">
-                          <label for="comment">Corresponding Address2:</label>
-                          <textarea class="form-control" rows="5" id="comment"></textarea>
+                          <textarea class="form-control" rows="5" placeholder="Adress"></textarea>
+                        </div>
+                        <div class="col-md-2">
+                          <h5>City:</h5>
+                          <input type="text" class="form-control" placeholder="city" required>
+                        </div>
+                        <div class="col-md-2">
+                          <h5>Pin:</h5>
+                          <input type="text" class="form-control" placeholder="Pin" required>
+                        </div>
+                        <div class="col-md-2">
+                          <h5>Telephone:</h5>
+                          <input type="text" class="form-control" placeholder="Telephone" required>
+                        </div>
+                        <div class="col-md-3">
+                          <h5>mobile:</h5>
+                          <input type="text" class="form-control" placeholder="Mobile" required>
                         </div>
                       </div>
 
