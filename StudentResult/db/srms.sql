@@ -178,7 +178,7 @@ CREATE TABLE `staff` (
 --
 
 CREATE TABLE `students` (
-  `id` int(15) NOT NULL,
+  `id` int(15) NOT NULL AUTO_INCREMENT,
   `sl_no` varchar(20) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
   `faculty_no` varchar(20) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
   `enrolment_no` varchar(20) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',

@@ -1,6 +1,9 @@
+<?php
+session_start();
+?>
+
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -20,7 +23,62 @@
 <body class="top-navbar-fixed">
 
 <?php
+// error_reporting(0);
+// include('includes/config.php');
+include 'connection.php';
+// include('connection.php');
+if(isset($_POST['submit'])){
+  $s_no=$_POST['s_no'];
+  $fac_no=$_POST['fac_no'];
+  $enrolment=$_POST['enrolment'];
+  $name=$_POST['name'];
+  $father=$_POST['father'];
+  $mother=$_POST['mother'];
+  $sex=$_POST['sex'];
+  $branch=$_POST['branch'];
+  $religion=$_POST['religion'];
+  $dob=$_POST['dob'];
+  $special_category=$_POST['special_category'];
+  $course_name=$_POST['course_name'];
+  $state=$_POST['state'];
+  $nationality=$_POST['nationality'];
+  $per_address=$_POST['per_add'];
+  $per_city=$_POST['per_city'];
+  $per_pin=$_POST['per_pin'];
+  $per_tel=$_POST['per_tel'];
+  $per_mobile=$_POST['per_mobile'];
+  $cor_add=$_POST['cor_add'];
+  $cor_city=$_POST['cor_city'];
+  $cor_pin=$_POST['cor_pin'];
+  $cor_tel=$_POST['cor_tel'];
+  $cor_mobile=$_POST['cor_mobile'];
+  
 
+  $insertquery="insert into students(sl_no, faculty_no, enrolment_no, full_name,
+   father_name, mother_name, sex, branch, religion, date_of_birth, special_category,
+    course_name,state, nationality, per_address1, per_city, per_pin, per_telephone,
+     per_mobile, cor_address1, cor_city, cor_pin, cor_telephone, cor_mobile) 
+     VALUES('$s_no','$fac_no','$enrolment','$name','$father','$mother','$sex','$branch','$religion',
+     '$dob','$special_category','$course_name','$state','$nationality','$per_address','$per_city',
+     '$per_pin','$per_tel','$per_mobile','$cor_add','$cor_city','$cor_pin','$cor_tel','$cor_mobile')";
+
+     $res = mysqli_query($con,$insertquery);
+
+    if($res){
+      ?>
+      <script>
+        alert("data inserted properly");
+      </script>
+      <?php
+    }else {
+      ?>
+      <script>
+        alert("data not inserted");
+      </script>
+      <?php
+    }
+ 
+}
 
 ?>
 
@@ -70,63 +128,76 @@
                     <div class="panel-title">
                       <h5>Fill the Student info</h5>
                     </div>
-                    <form>
+                    <form action="add-students.php" method="POST">
                       <div class="form-row">
                         <div class="col-md-4 mb-3">
-                          <input type="text" class="form-control" placeholder="Serial No" required>
+                          <input type="text" class="form-control" placeholder="Serial No"
+                          name="s_no" >
                         </div>
                         <div class="col-md-4 mb-3">
-                          <input type="text" class="form-control" placeholder="Faculty No" required>
+                          <input type="text" class="form-control" placeholder="Faculty No"
+                          name="fac_no" >
                         </div>
                         <div class="col-md-4 mb-3">
-                          <input type="text" class="form-control" placeholder="Enrollment No" required>
+                          <input type="text" class="form-control" placeholder="Enrollment No"
+                          name="enrolment" >
                         </div>
                       </div>
                       <div class="form-row">
                         <div class="col-md-4 mb-3">
-                          <input type="text" class="form-control" placeholder="Full Name" required>
+                          <input type="text" class="form-control" placeholder="Full Name"
+                          name="name" >
                         </div>
                         <div class="col-md-4 mb-3">
-                          <input type="text" class="form-control" placeholder="Father's Name" required>
+                          <input type="text" class="form-control" placeholder="Father's Name"
+                          name="father" >
                         </div>
                         <div class="col-md-4 mb-3">
-                          <input type="text" class="form-control" placeholder="Mother's Name" required>
+                          <input type="text" class="form-control" placeholder="Mother's Name"
+                          name="mother" >
                         </div>
                       </div>
 
                       <!-- // change krna hai -->
                       <div class="form-row">
                         <div class="col-md-4 mb-4">  Sex :
-                          <label class="radio-inline"><input type="radio" name="optradio" checked>Male </label>
-                          <label class="radio-inline"><input type="radio" name="optradio">Female</label>
-                          <label class="radio-inline"><input type="radio" name="optradio">Others</label>
+                          <label class="radio-inline"><input type="radio" name="sex" value="Malw">Male </label>
+                          <label class="radio-inline"><input type="radio" name="sex" value="Female">Female</label>
+                          <label class="radio-inline"><input type="radio" name="sex" value="Others">Others</label>
 
                         </div>
 
                         <div class="col-md-4">
-                          <input type="text" class="form-control" placeholder="branch" required>
+                          <input type="text" class="form-control" placeholder="branch"
+                          name="branch" >
                         </div>
                         <div class="col-md-2">
-                          <input type="text" class="form-control" placeholder="Religion" required>
+                          <input type="text" class="form-control" placeholder="Religion"
+                          name="religion" >
                         </div>
                         <div class="col-md-2">
-                          <input type="date" class="form-control" placeholder="DOB" required>
+                          <input type="date" class="form-control" placeholder="DOB" 
+                          name="dob">
                         </div>
                       </div>
 
 
                       <div class="form-row">
                         <div class="col-md-3 mb-3">
-                          <input type="text" class="form-control" placeholder="special Category" required>
+                          <input type="text" class="form-control" placeholder="special Category" value="General"
+                          name="special_category" >
                         </div>
                         <div class="col-md-3">
-                          <input type="text" class="form-control" placeholder="CourseName" required>
+                          <input type="text" class="form-control" placeholder="CourseName" 
+                          name="course_name" >
                         </div>
                         <div class="col-md-3">
-                          <input type="text" class="form-control" placeholder="State" required>
+                          <input type="text" class="form-control" placeholder="State" 
+                          name="state" >
                         </div>
                         <div class="col-md-3">
-                          <input type="text" class="form-control" placeholder="Nationality" required>
+                          <input type="text" class="form-control" placeholder="Nationality" 
+                          name="nationality" >
                         </div>
                       </div>
 
@@ -134,51 +205,61 @@
                       <h5>corresponding address:</h5>
                       <div class="form-row">
                         <div class="col-md-3 mb-3">
-                          <textarea class="form-control" rows="5" placeholder="Adress"></textarea>
+                          <textarea class="form-control" rows="5" placeholder="Adress"
+                          name="cor_add">enter address</textarea>
                         </div>
                         <div class="col-md-2">
                         <h5>City:</h5>
-                          <input type="text" class="form-control" placeholder="city" required>
+                          <input type="text" class="form-control" placeholder="city" 
+                          name="cor_city" >
                         </div>
                         <div class="col-md-2">
                         <h5>Pin:</h5>
-                          <input type="text" class="form-control" placeholder="Pin" required>
+                          <input type="text" class="form-control" placeholder="Pin" 
+                          name="cor_pin" >
                         </div>
                         <div class="col-md-2">
                         <h5>Telephone:</h5>
-                          <input type="text" class="form-control" placeholder="Telephone" required>
+                          <input type="text" class="form-control" placeholder="Telephone"
+                          name="cor_tel" >
                         </div>
                         <div class="col-md-3">
                         <h5>mobile:</h5>
-                          <input type="text" class="form-control" placeholder="Mobile" required>
+                          <input type="text" class="form-control" placeholder="Mobile"
+                          name="cor_mobile" >
                         </div>
                       </div>
 
                       <h5>Permanent address:</h5>
                       <div class="form-row">
                         <div class="col-md-3 mb-3">
-                          <textarea class="form-control" rows="5" placeholder="Adress"></textarea>
+                          <textarea class="form-control" rows="5" placeholder="Adress"
+                          name="per_add" ></textarea>
                         </div>
                         <div class="col-md-2">
                           <h5>City:</h5>
-                          <input type="text" class="form-control" placeholder="city" required>
+                          <input type="text" class="form-control" placeholder="city"
+                          name="per_city" >
                         </div>
                         <div class="col-md-2">
                           <h5>Pin:</h5>
-                          <input type="text" class="form-control" placeholder="Pin" required>
+                          <input type="text" class="form-control" placeholder="Pin"
+                          name="per_pin" >
                         </div>
                         <div class="col-md-2">
                           <h5>Telephone:</h5>
-                          <input type="text" class="form-control" placeholder="Telephone" required>
+                          <input type="text" class="form-control" placeholder="Telephone"
+                          name="per_tel" >
                         </div>
                         <div class="col-md-3">
                           <h5>mobile:</h5>
-                          <input type="text" class="form-control" placeholder="Mobile" required>
+                          <input type="text" class="form-control" placeholder="Mobile number"
+                          name="per_mobile" >
                         </div>
                       </div>
 
                       <div class="col-md-3 mb-3">
-                        <input type="submit" >
+                        <input type="submit" name="submit" value="Add Student">
                       </div>
 
                     </form>
