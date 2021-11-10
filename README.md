@@ -1,1 +1,1 @@
-# Acreditation Management System 
+# Accreditation Management System 
