@@ -45,7 +45,10 @@ html, body {
   font-size: 12px;
   line-height: 1.75em;
 }
-
+/* .admin{
+  width: 50%;
+  margin: auto;
+} */
 @media (min-width: 600px) {
   html, body {
     font-size: calc( 12px + (14 - 12) * ((100vw - 600px) / (1140 - 600)));

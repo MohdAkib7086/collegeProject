@@ -1,14 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 4.7.0
+-- version 5.1.1
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 23, 2021 at 09:31 AM
--- Server version: 5.7.17
--- PHP Version: 5.6.30
+-- Generation Time: Nov 16, 2021 at 07:47 AM
+-- Server version: 10.4.20-MariaDB
+-- PHP Version: 8.0.9
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -19,89 +18,34 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `amudb`
+-- Database: `srms`
 --
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `countries`
+-- Table structure for table `admin`
 --
 
 CREATE TABLE `admin` (
   `id` int(11) NOT NULL,
   `UserName` varchar(100) NOT NULL,
   `Password` varchar(100) NOT NULL,
-  `updationDate` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00' ON UPDATE CURRENT_TIMESTAMP
+  `updationDate` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00' ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
-
+--
+-- Dumping data for table `admin`
+--
 
 INSERT INTO `admin` (`id`, `UserName`, `Password`, `updationDate`) VALUES
 (1, 'admin', '21232f297a57a5a743894a0e4a801fc3', '2020-06-11 12:26:07');
--- CREATE TABLE `countries` (
---   `countries_id` int(11) NOT NULL,
---   `countries_name` varchar(64) COLLATE utf8_unicode_ci NOT NULL DEFAULT ''
--- ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- --------------------------------------------------------
 
---
--- Table structure for table `postannouncements`
---
-
--- CREATE TABLE `postannouncements` (
---   `PostAnnouncementID` bigint(20) NOT NULL,
---   `Title` varchar(100) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
---   `Description` text COLLATE utf8_unicode_ci NOT NULL,
---   `SendAll` tinyint(1) NOT NULL DEFAULT '0',
---   `Faculty` tinyint(1) NOT NULL DEFAULT '0',
---   `Dean` tinyint(1) NOT NULL,
---   `Publisher` tinyint(1) NOT NULL DEFAULT '0',
---   `Website` tinyint(1) NOT NULL DEFAULT '0',
---   `AnnounceDate` date NOT NULL DEFAULT '0000-00-00',
---   `Username` varchar(50) COLLATE utf8_unicode_ci NOT NULL
--- ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
-
--- --------------------------------------------------------
-
-
---- plcement record -----------------------
-CREATE TABLE `PlacementRecord` (
-  `id` int(11) NOT NULL,
-  `sl_no` varchar(20) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
-  `faculty_no` varchar(20) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
-  `enrolment_no` varchar(20) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
- `full_name` varchar(100) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
-  `branch` varchar(50) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
-  `year` int(11) DEFAULT NULL,
-  `company` varchar(100) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
-  `on/offcampus` varchar(100) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
-
-
-CREATE TABLE `tblsubjects` (
-  `id` int(11) NOT NULL,
-  `SubjectName` varchar(100) NOT NULL,
-  `SubjectCode` varchar(100) NOT NULL,
-  `Creationdate` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `UpdationDate` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00' ON UPDATE CURRENT_TIMESTAMP
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
-----
--- table for `club and societies`
-CREATE TABLE `clubAndSocities`(
- `id` int(15) NOT NULL,
-  `clubName` varchar(50) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
-  `FacultyAdvisor` varchar(50) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
-  `purpose` varchar(100) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
-  `status` tinyint(1) NOT NULL DEFAULT '1',
-)  ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 --
 -- Table structure for table `projects`
 --
-
 
 CREATE TABLE `projects` (
   `id` int(20) NOT NULL,
@@ -166,7 +110,7 @@ CREATE TABLE `staff` (
   `OfficeCountry` varchar(50) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
   `ResidenceCountry` varchar(50) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
   `PermanentCountry` varchar(50) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
-  `status` tinyint(1) NOT NULL DEFAULT '0',
+  `status` tinyint(1) NOT NULL DEFAULT 0,
   `username` varchar(50) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
   `password` varchar(50) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
@@ -188,7 +132,7 @@ CREATE TABLE `students` (
   `sex` varchar(5) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
   `branch` varchar(50) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
   `religion` varchar(50) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
-  `date_of_birth` date NOT NULL DEFAULT '0000-00-00',
+  `date_of_birth` date DEFAULT NULL,
   `special_category` varchar(50) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
   `course_name` varchar(50) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
   `state` varchar(50) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
@@ -197,20 +141,30 @@ CREATE TABLE `students` (
   `hall_assigned` varchar(50) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
   `room_no` varchar(10) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
   `per_address1` varchar(30) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
-  `per_address2` varchar(30) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
   `per_city` varchar(30) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
   `per_pin` varchar(10) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
   `per_telephone` varchar(15) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
   `per_mobile` varchar(15) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
   `status` char(1) COLLATE utf8_unicode_ci NOT NULL DEFAULT '0',
   `cor_address1` varchar(255) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
-  `cor_address2` varchar(255) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
   `cor_city` varchar(50) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
   `cor_pin` varchar(20) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
   `cor_telephone` varchar(20) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
   `cor_mobile` varchar(20) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
   `city` varchar(50) COLLATE utf8_unicode_ci NOT NULL DEFAULT ''
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Dumping data for table `students`
+--
+
+INSERT INTO `students` (`id`, `sl_no`, `faculty_no`, `enrolment_no`, `full_name`, `father_name`, `mother_name`, `sex`, `branch`, `religion`, `date_of_birth`, `special_category`, `course_name`, `state`, `nationality`, `exam_passed`, `hall_assigned`, `room_no`, `per_address1`, `per_city`, `per_pin`, `per_telephone`, `per_mobile`, `status`, `cor_address1`, `cor_city`, `cor_pin`, `cor_telephone`, `cor_mobile`, `city`) VALUES
+(2, 'akib khan', '19COB034', 'GL3120', 'MOHD AKIB', '', '', '', '', '', '0000-00-00', 'General', '', '', '', '', '', '', '', '', '', '', '', '0', '', '', '', '9838131377', '', ''),
+(5, 'islamasdgas', 'fasdfa', 'asdfadsdf', 'asdgasdf', 'asdgasdg', 'asdgfasdfg', 'Malw', '', '', '2021-11-16', 'General', '', '', '', '', '', '', '', '', '', '', '', '0', 'enter address', '', '', '', '', ''),
+(6, 'king kha', '19cob043', 'asg', '', '', '', 'Malw', '', '', '0000-00-00', 'General', '', '', '', '', '', '', 'asdgasgdsadg', '', '', '', '', '0', 'enter aadsfadfasfasdfsadfddress', '', '', '', '', ''),
+(7, 'asgasdgsd', 'sagdasdgf', 'asdfsadf', '', '', '', '', '', '', '0000-00-00', 'General', '', '', '', '', '', '', '', 'sadfsadf', 'asgsag', '1232456789', '9838131377', '0', 'enter address', '', '', '', '', ''),
+(8, '23', '19cob045', 'gl4530', 'MOHD AKIB', '', '', '', '', '', '0000-00-00', 'General', '', '', '', '', '', '', '', '', '', '', '', '0', 'enter address', '', '', '9838131377', '', ''),
+(9, '35', '19cob035', 'gl3140', 'alkama hassan', 'hassan', 'asdf', 'Malw', 'cs', 'ISLAM', '2021-11-09', 'GENERAL', 'b.tech', 'Bihar', 'India', '', '', '', 'aligarh', 'aligarh', '27220010', '2223444', '1234567890', '0', 'patna bihar ', 'patana', '272126', '12345678', '1234567890', '');
 
 -- --------------------------------------------------------
 
@@ -261,7 +215,7 @@ CREATE TABLE `students_old` (
 
 CREATE TABLE `tblproject_any-other-information` (
   `ID` bigint(20) NOT NULL,
-  `ProjectID` bigint(20) NOT NULL DEFAULT '0',
+  `ProjectID` bigint(20) NOT NULL DEFAULT 0,
   `Details` text COLLATE utf8_unicode_ci NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
@@ -273,7 +227,7 @@ CREATE TABLE `tblproject_any-other-information` (
 
 CREATE TABLE `tblproject_awards-and-honors` (
   `ID` bigint(20) NOT NULL,
-  `ProjectID` bigint(20) NOT NULL DEFAULT '0',
+  `ProjectID` bigint(20) NOT NULL DEFAULT 0,
   `Name` varchar(50) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
   `Awarding_Body` varchar(100) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
   `Year` varchar(10) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
@@ -289,7 +243,7 @@ CREATE TABLE `tblproject_awards-and-honors` (
 
 CREATE TABLE `tblproject_books-chapters-technical-papers` (
   `ID` bigint(20) NOT NULL,
-  `ProjectID` bigint(20) NOT NULL DEFAULT '0',
+  `ProjectID` bigint(20) NOT NULL DEFAULT 0,
   `Details` text COLLATE utf8_unicode_ci NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
@@ -301,7 +255,7 @@ CREATE TABLE `tblproject_books-chapters-technical-papers` (
 
 CREATE TABLE `tblproject_conference-papers` (
   `ID` bigint(20) NOT NULL,
-  `ProjectID` bigint(20) NOT NULL DEFAULT '0',
+  `ProjectID` bigint(20) NOT NULL DEFAULT 0,
   `Authors` varchar(50) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
   `Title` varchar(50) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
   `ConferenceName` varchar(50) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
@@ -317,7 +271,7 @@ CREATE TABLE `tblproject_conference-papers` (
 
 CREATE TABLE `tblproject_journal-publications` (
   `ID` bigint(20) NOT NULL,
-  `ProjectID` bigint(50) NOT NULL DEFAULT '0',
+  `ProjectID` bigint(50) NOT NULL DEFAULT 0,
   `Authors` varchar(50) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
   `Title` varchar(50) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
   `JournalName` varchar(50) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
@@ -333,7 +287,7 @@ CREATE TABLE `tblproject_journal-publications` (
 
 CREATE TABLE `tblproject_patents` (
   `ID` bigint(20) NOT NULL,
-  `ProjectID` bigint(20) NOT NULL DEFAULT '0',
+  `ProjectID` bigint(20) NOT NULL DEFAULT 0,
   `Patent_Number` varchar(50) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
   `Patent_Name` varchar(50) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
   `Year` varchar(20) COLLATE utf8_unicode_ci NOT NULL DEFAULT ''
@@ -347,7 +301,7 @@ CREATE TABLE `tblproject_patents` (
 
 CREATE TABLE `tblproject_project-staff` (
   `ID` bigint(20) NOT NULL,
-  `ProjectID` bigint(20) NOT NULL DEFAULT '0',
+  `ProjectID` bigint(20) NOT NULL DEFAULT 0,
   `Name` varchar(100) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
   `Designation` varchar(100) COLLATE utf8_unicode_ci NOT NULL DEFAULT ''
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
@@ -360,7 +314,7 @@ CREATE TABLE `tblproject_project-staff` (
 
 CREATE TABLE `tblproject_workshop-seminar-attended` (
   `ID` bigint(20) NOT NULL,
-  `ProjectID` bigint(20) NOT NULL DEFAULT '0',
+  `ProjectID` bigint(20) NOT NULL DEFAULT 0,
   `Name` varchar(50) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
   `National_International` varchar(50) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
   `Year` varchar(50) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
@@ -375,7 +329,7 @@ CREATE TABLE `tblproject_workshop-seminar-attended` (
 
 CREATE TABLE `tblproject_workshop-seminar-conference-organized` (
   `ID` bigint(20) NOT NULL,
-  `ProjectID` bigint(20) NOT NULL DEFAULT '0',
+  `ProjectID` bigint(20) NOT NULL DEFAULT 0,
   `Name_Of_Workshop_Seminar` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
   `Organizing_Body` varchar(100) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
   `Role` varchar(50) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
@@ -391,7 +345,7 @@ CREATE TABLE `tblproject_workshop-seminar-conference-organized` (
 
 CREATE TABLE `tblstudentqualification` (
   `QID` bigint(20) NOT NULL,
-  `StudentID` bigint(20) NOT NULL DEFAULT '0',
+  `StudentID` bigint(20) NOT NULL DEFAULT 0,
   `Degree` varchar(50) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
   `University` varchar(50) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
   `Year` varchar(50) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
@@ -402,12 +356,26 @@ CREATE TABLE `tblstudentqualification` (
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `tblsubjects`
+--
+
+CREATE TABLE `tblsubjects` (
+  `id` int(11) NOT NULL,
+  `SubjectName` varchar(100) NOT NULL,
+  `SubjectCode` varchar(100) NOT NULL,
+  `Creationdate` timestamp NOT NULL DEFAULT current_timestamp(),
+  `UpdationDate` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00' ON UPDATE current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `tblteacher_administrative-posts-positions-held`
 --
 
 CREATE TABLE `tblteacher_administrative-posts-positions-held` (
   `ID` bigint(20) NOT NULL,
-  `EmployeeID` bigint(20) NOT NULL DEFAULT '0',
+  `EmployeeID` bigint(20) NOT NULL DEFAULT 0,
   `Name` varchar(100) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
   `Year_Duration` varchar(10) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
   `Remarks` text COLLATE utf8_unicode_ci NOT NULL
@@ -421,7 +389,7 @@ CREATE TABLE `tblteacher_administrative-posts-positions-held` (
 
 CREATE TABLE `tblteacher_any-other-information` (
   `ID` bigint(20) NOT NULL,
-  `EmployeeID` bigint(20) NOT NULL DEFAULT '0',
+  `EmployeeID` bigint(20) NOT NULL DEFAULT 0,
   `Details` text COLLATE utf8_unicode_ci NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
@@ -433,7 +401,7 @@ CREATE TABLE `tblteacher_any-other-information` (
 
 CREATE TABLE `tblteacher_awards-and-honors` (
   `ID` bigint(20) NOT NULL,
-  `EmployeeID` bigint(20) NOT NULL DEFAULT '0',
+  `EmployeeID` bigint(20) NOT NULL DEFAULT 0,
   `Name` varchar(50) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
   `Awarding_Body` varchar(100) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
   `Year` varchar(10) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
@@ -449,7 +417,7 @@ CREATE TABLE `tblteacher_awards-and-honors` (
 
 CREATE TABLE `tblteacher_books-chapters-technical-papers` (
   `ID` bigint(20) NOT NULL,
-  `EmployeeID` bigint(20) NOT NULL DEFAULT '0',
+  `EmployeeID` bigint(20) NOT NULL DEFAULT 0,
   `Details` text COLLATE utf8_unicode_ci NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
@@ -461,7 +429,7 @@ CREATE TABLE `tblteacher_books-chapters-technical-papers` (
 
 CREATE TABLE `tblteacher_conference-papers` (
   `ID` bigint(20) NOT NULL,
-  `EmployeeID` bigint(20) NOT NULL DEFAULT '0',
+  `EmployeeID` bigint(20) NOT NULL DEFAULT 0,
   `Authors` varchar(50) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
   `Title` varchar(50) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
   `ConferenceName` varchar(50) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
@@ -477,7 +445,7 @@ CREATE TABLE `tblteacher_conference-papers` (
 
 CREATE TABLE `tblteacher_educational-qualifications` (
   `ID` bigint(20) NOT NULL,
-  `EmployeeID` bigint(20) NOT NULL DEFAULT '0',
+  `EmployeeID` bigint(20) NOT NULL DEFAULT 0,
   `Degree` varchar(50) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
   `University` varchar(50) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
   `Year` varchar(50) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
@@ -493,7 +461,7 @@ CREATE TABLE `tblteacher_educational-qualifications` (
 
 CREATE TABLE `tblteacher_examinership-supervision-of-dissertation-projects-phd` (
   `ID` bigint(20) NOT NULL,
-  `EmployeeID` bigint(20) NOT NULL DEFAULT '0',
+  `EmployeeID` bigint(20) NOT NULL DEFAULT 0,
   `Title` varchar(100) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
   `Degree` varchar(50) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
   `Year` varchar(10) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
@@ -509,8 +477,8 @@ CREATE TABLE `tblteacher_examinership-supervision-of-dissertation-projects-phd` 
 
 CREATE TABLE `tblteacher_funded-projects` (
   `ID` bigint(20) NOT NULL,
-  `EmployeeID` bigint(20) NOT NULL DEFAULT '0',
-  `ProjectID` bigint(20) NOT NULL DEFAULT '0',
+  `EmployeeID` bigint(20) NOT NULL DEFAULT 0,
+  `ProjectID` bigint(20) NOT NULL DEFAULT 0,
   `Principal_Investigator` varchar(100) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
   `Amount_Approved` varchar(100) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
   `Co_Investigator` varchar(100) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
@@ -528,7 +496,7 @@ CREATE TABLE `tblteacher_funded-projects` (
 
 CREATE TABLE `tblteacher_journal-publications` (
   `ID` bigint(20) NOT NULL,
-  `EmployeeID` bigint(50) NOT NULL DEFAULT '0',
+  `EmployeeID` bigint(50) NOT NULL DEFAULT 0,
   `Authors` varchar(50) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
   `Title` varchar(50) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
   `JournalName` varchar(50) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
@@ -544,7 +512,7 @@ CREATE TABLE `tblteacher_journal-publications` (
 
 CREATE TABLE `tblteacher_membership-of-learned-professional-technical-bodies` (
   `ID` bigint(20) NOT NULL,
-  `EmployeeID` bigint(20) NOT NULL DEFAULT '0',
+  `EmployeeID` bigint(20) NOT NULL DEFAULT 0,
   `Details` text COLLATE utf8_unicode_ci NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
@@ -556,7 +524,7 @@ CREATE TABLE `tblteacher_membership-of-learned-professional-technical-bodies` (
 
 CREATE TABLE `tblteacher_other-teaching-research-administrative-activities` (
   `ID` bigint(20) NOT NULL,
-  `EmployeeID` bigint(20) NOT NULL DEFAULT '0',
+  `EmployeeID` bigint(20) NOT NULL DEFAULT 0,
   `Details` text COLLATE utf8_unicode_ci NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
@@ -568,7 +536,7 @@ CREATE TABLE `tblteacher_other-teaching-research-administrative-activities` (
 
 CREATE TABLE `tblteacher_patents` (
   `ID` bigint(20) NOT NULL,
-  `EmployeeID` bigint(20) NOT NULL DEFAULT '0',
+  `EmployeeID` bigint(20) NOT NULL DEFAULT 0,
   `Patent_Number` varchar(50) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
   `Patent_Name` varchar(50) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
   `Year` varchar(20) COLLATE utf8_unicode_ci NOT NULL DEFAULT ''
@@ -582,8 +550,8 @@ CREATE TABLE `tblteacher_patents` (
 
 CREATE TABLE `tblteacher_project-submitted-for-funding` (
   `ID` bigint(20) NOT NULL,
-  `EmployeeID` bigint(20) NOT NULL DEFAULT '0',
-  `ProjectID` bigint(20) NOT NULL DEFAULT '0',
+  `EmployeeID` bigint(20) NOT NULL DEFAULT 0,
+  `ProjectID` bigint(20) NOT NULL DEFAULT 0,
   `Title` varchar(100) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
   `Funding_Body` varchar(100) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
   `Year` varchar(10) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
@@ -598,7 +566,7 @@ CREATE TABLE `tblteacher_project-submitted-for-funding` (
 
 CREATE TABLE `tblteacher_work-experience` (
   `ID` bigint(20) NOT NULL,
-  `EmployeeID` bigint(20) NOT NULL DEFAULT '0',
+  `EmployeeID` bigint(20) NOT NULL DEFAULT 0,
   `WorkExperience` varchar(50) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
   `designation` varchar(50) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
   `Institution` varchar(50) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
@@ -614,7 +582,7 @@ CREATE TABLE `tblteacher_work-experience` (
 
 CREATE TABLE `tblteacher_workshop-seminar-attended` (
   `ID` bigint(20) NOT NULL,
-  `EmployeeID` bigint(20) NOT NULL DEFAULT '0',
+  `EmployeeID` bigint(20) NOT NULL DEFAULT 0,
   `Name` varchar(50) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
   `National_International` varchar(50) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
   `Year` varchar(50) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
@@ -629,13 +597,56 @@ CREATE TABLE `tblteacher_workshop-seminar-attended` (
 
 CREATE TABLE `tblteacher_workshop-seminar-conference-organized` (
   `ID` bigint(20) NOT NULL,
-  `EmployeeID` bigint(20) NOT NULL DEFAULT '0',
+  `EmployeeID` bigint(20) NOT NULL DEFAULT 0,
   `NameOfWorkshopSeminar` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
   `Organizing_Body` varchar(100) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
   `Role` varchar(50) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
   `Year` varchar(10) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
   `Remarks` varchar(100) COLLATE utf8_unicode_ci NOT NULL DEFAULT ''
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `ug_curriculum_cobt`
+--
+
+CREATE TABLE `ug_curriculum_cobt` (
+  `id` int(15) NOT NULL,
+  `course_catg` varchar(15) NOT NULL,
+  `course_no` varchar(10) NOT NULL,
+  `course_title` varchar(255) NOT NULL,
+  `contact_prd_L` int(15) NOT NULL,
+  `contact_prd_T` int(15) NOT NULL,
+  `contact_prd_P` int(15) NOT NULL,
+  `credits` varchar(15) NOT NULL,
+  `marks_course_work` varchar(15) NOT NULL DEFAULT '15',
+  `marks_midsem` varchar(15) NOT NULL DEFAULT '25',
+  `marks_endsem` varchar(15) NOT NULL DEFAULT '60',
+  `total` varchar(15) NOT NULL DEFAULT '100'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `ug_curriculum_cobt`
+--
+
+INSERT INTO `ug_curriculum_cobt` (`id`, `course_catg`, `course_no`, `course_title`, `contact_prd_L`, `contact_prd_T`, `contact_prd_P`, `credits`, `marks_course_work`, `marks_midsem`, `marks_endsem`, `total`) VALUES
+(1, 'BS', 'AMS110', 'APPLIED MATHEMATICS I', 3, 1, 0, '4', '15', '25', '60', '100'),
+(2, 'BS', 'ACS1110', 'APPLIED CHEMISTRY', 3, 1, 0, '4', '15', '25', '60', '100'),
+(3, 'ESA', 'EEA1110', 'PRINCIPLE OF ELECTRICAL ENGINEERING', 2, 1, 0, '3', '15', '25', '60', '100'),
+(4, 'ESA', 'CEA1110', 'ENVIRONMENTAL STUDIES', 2, 1, 0, '3', '15', '25', '60', '100'),
+(5, 'ESA', 'MEA1110', 'ENGINEERING THERMODYNAMICS', 3, 1, 0, '4', '15', '25', '60', '100'),
+(6, 'BS', 'ACS1910', 'Applied Chemistry Lab', 0, 0, 3, '1.5', '60', '', '40', '100'),
+(7, 'ESA', 'COA1910', 'Computer programming Lab', 0, 0, 3, '1.5', '60', '', '40', '100'),
+(8, 'ESA', 'MEA1910', 'Engineering Graphics Lab', 0, 0, 3, '1.5', '60', '', '40', '100'),
+(9, 'BS', 'AMS1120', 'Applied Mathematics II', 3, 1, 0, '4', '15', '25', '60', '100'),
+(10, 'BS', 'APS1110', 'Applied Physics', 3, 1, 0, '4', '15', '25', '60', '100'),
+(11, 'ESA', 'ELA1110', 'Principle of Electronics Engineering ', 2, 1, 0, '3', '15', '25', '60', '100'),
+(12, 'ESA', 'CEA1120', 'Strength Of Materials', 2, 1, 0, '3', '15', '25', '60', '100'),
+(13, 'ESA', 'MEA1120', 'Engineering Mechanics ', 2, 1, 0, '3', '15', '25', '60', '100'),
+(14, 'HM', 'EZH1110', 'English', 2, 1, 0, '3', '15', '25', '60', '100'),
+(15, 'BS', 'APS1910', 'Applied Physics Lab', 0, 0, 3, '1.5', '60', '', '40', '100'),
+(16, 'ESA', 'MEA1910', 'Manufacturing Lab', 0, 0, 3, '1.5', '60', '', '40', '100');
 
 -- --------------------------------------------------------
 
@@ -648,19 +659,14 @@ CREATE TABLE `users` (
   `username` varchar(50) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
   `passwd` varchar(50) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
   `usertype` varchar(20) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
-  `status` tinyint(1) NOT NULL DEFAULT '1',
+  `status` tinyint(1) NOT NULL DEFAULT 1,
   `uname` varchar(30) COLLATE utf8_unicode_ci NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
+--
 -- Indexes for dumped tables
 --
 
--- --
--- -- Indexes for table `countries`
--- --
--- ALTER TABLE `countries`
---   ADD PRIMARY KEY (`countries_id`),
---   ADD KEY `IDX_COUNTRIES_NAME` (`countries_name`);
 --
 -- Indexes for table `admin`
 --
@@ -668,25 +674,8 @@ ALTER TABLE `admin`
   ADD PRIMARY KEY (`id`);
 
 --
---Index for table `placementRecord`
+-- Indexes for table `projects`
 --
-ALTER TABLE `PlacementRecord`
-  ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `enrolment_no` (`enrolment_no`),
-  ADD UNIQUE KEY `r_no` (`faculty_no`);
-
-  --
--- Indexes for table `tblsubjects`
---
-ALTER TABLE `tblsubjects`
-  ADD PRIMARY KEY (`id`);
-
-
---
-ALTER TABLE `clubAndSocities`
-  ADD PRIMARY KEY (`id`);
-
-
 ALTER TABLE `projects`
   ADD PRIMARY KEY (`id`);
 
@@ -705,346 +694,33 @@ ALTER TABLE `students`
   ADD UNIQUE KEY `r_no` (`faculty_no`);
 
 --
--- Indexes for table `students_old`
+-- Indexes for table `tblsubjects`
 --
-ALTER TABLE `students_old`
-  ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `enrolment_no` (`enrolment_no`),
-  ADD UNIQUE KEY `r_no` (`faculty_no`),
-  ADD UNIQUE KEY `sl_no` (`sl_no`);
+ALTER TABLE `tblsubjects`
+  ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `tblproject_any-other-information`
+-- Indexes for table `ug_curriculum_cobt`
 --
-ALTER TABLE `tblproject_any-other-information`
-  ADD PRIMARY KEY (`ID`);
-
---
--- Indexes for table `tblproject_awards-and-honors`
---
-ALTER TABLE `tblproject_awards-and-honors`
-  ADD PRIMARY KEY (`ID`);
-
---
--- Indexes for table `tblproject_books-chapters-technical-papers`
---
-ALTER TABLE `tblproject_books-chapters-technical-papers`
-  ADD PRIMARY KEY (`ID`);
-
---
--- Indexes for table `tblproject_conference-papers`
---
-ALTER TABLE `tblproject_conference-papers`
-  ADD PRIMARY KEY (`ID`);
-
---
--- Indexes for table `tblproject_journal-publications`
---
-ALTER TABLE `tblproject_journal-publications`
-  ADD PRIMARY KEY (`ID`);
-
---
--- Indexes for table `tblproject_patents`
---
-ALTER TABLE `tblproject_patents`
-  ADD PRIMARY KEY (`ID`);
-
---
--- Indexes for table `tblproject_project-staff`
---
-ALTER TABLE `tblproject_project-staff`
-  ADD PRIMARY KEY (`ID`);
-
---
--- Indexes for table `tblproject_workshop-seminar-attended`
---
-ALTER TABLE `tblproject_workshop-seminar-attended`
-  ADD PRIMARY KEY (`ID`);
-
---
--- Indexes for table `tblproject_workshop-seminar-conference-organized`
---
-ALTER TABLE `tblproject_workshop-seminar-conference-organized`
-  ADD PRIMARY KEY (`ID`);
-
---
--- Indexes for table `tblstudentqualification`
---
-ALTER TABLE `tblstudentqualification`
-  ADD PRIMARY KEY (`QID`);
-
---
--- Indexes for table `tblteacher_administrative-posts-positions-held`
---
-ALTER TABLE `tblteacher_administrative-posts-positions-held`
-  ADD PRIMARY KEY (`ID`);
-
---
--- Indexes for table `tblteacher_any-other-information`
---
-ALTER TABLE `tblteacher_any-other-information`
-  ADD PRIMARY KEY (`ID`);
-
---
--- Indexes for table `tblteacher_awards-and-honors`
---
-ALTER TABLE `tblteacher_awards-and-honors`
-  ADD PRIMARY KEY (`ID`);
-
---
--- Indexes for table `tblteacher_books-chapters-technical-papers`
---
-ALTER TABLE `tblteacher_books-chapters-technical-papers`
-  ADD PRIMARY KEY (`ID`);
-
---
--- Indexes for table `tblteacher_conference-papers`
---
-ALTER TABLE `tblteacher_conference-papers`
-  ADD PRIMARY KEY (`ID`);
-
---
--- Indexes for table `tblteacher_educational-qualifications`
---
-ALTER TABLE `tblteacher_educational-qualifications`
-  ADD PRIMARY KEY (`ID`);
-
---
--- Indexes for table `tblteacher_examinership-supervision-of-dissertation-projects-phd`
---
-ALTER TABLE `tblteacher_examinership-supervision-of-dissertation-projects-phd`
-  ADD PRIMARY KEY (`ID`);
-
---
--- Indexes for table `tblteacher_funded-projects`
---
-ALTER TABLE `tblteacher_funded-projects`
-  ADD PRIMARY KEY (`ID`);
-
---
--- Indexes for table `tblteacher_journal-publications`
---
-ALTER TABLE `tblteacher_journal-publications`
-  ADD PRIMARY KEY (`ID`);
-
---
--- Indexes for table `tblteacher_membership-of-learned-professional-technical-bodies`
---
-ALTER TABLE `tblteacher_membership-of-learned-professional-technical-bodies`
-  ADD PRIMARY KEY (`ID`);
-
---
--- Indexes for table `tblteacher_other-teaching-research-administrative-activities`
---
-ALTER TABLE `tblteacher_other-teaching-research-administrative-activities`
-  ADD PRIMARY KEY (`ID`);
-
---
--- Indexes for table `tblteacher_patents`
---
-ALTER TABLE `tblteacher_patents`
-  ADD PRIMARY KEY (`ID`);
-
---
--- Indexes for table `tblteacher_project-submitted-for-funding`
---
-ALTER TABLE `tblteacher_project-submitted-for-funding`
-  ADD PRIMARY KEY (`ID`);
-
---
--- Indexes for table `tblteacher_work-experience`
---
-ALTER TABLE `tblteacher_work-experience`
-  ADD PRIMARY KEY (`ID`);
-
---
--- Indexes for table `tblteacher_workshop-seminar-attended`
---
-ALTER TABLE `tblteacher_workshop-seminar-attended`
-  ADD PRIMARY KEY (`ID`);
-
---
--- Indexes for table `tblteacher_workshop-seminar-conference-organized`
---
-ALTER TABLE `tblteacher_workshop-seminar-conference-organized`
-  ADD PRIMARY KEY (`ID`);
-
---
--- Indexes for table `users`
---
-ALTER TABLE `users`
-  ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `username` (`username`);
+ALTER TABLE `ug_curriculum_cobt`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- AUTO_INCREMENT for dumped tables
 --
 
 --
--- AUTO_INCREMENT for table `countries`
---
-ALTER TABLE `countries`
-  MODIFY `countries_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=240;
---
--- AUTO_INCREMENT for table `postannouncements`
---
-ALTER TABLE `postannouncements`
-  MODIFY `PostAnnouncementID` bigint(20) NOT NULL AUTO_INCREMENT;
---
--- AUTO_INCREMENT for table `projects`
---
-ALTER TABLE `projects`
-  MODIFY `id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
---
--- AUTO_INCREMENT for table `staff`
---
-ALTER TABLE `staff`
-  MODIFY `id` int(15) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20731;
---
 -- AUTO_INCREMENT for table `students`
 --
 ALTER TABLE `students`
-  MODIFY `id` int(15) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1220;
+  MODIFY `id` int(15) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+
 --
--- AUTO_INCREMENT for table `students_old`
+-- AUTO_INCREMENT for table `ug_curriculum_cobt`
 --
-ALTER TABLE `students_old`
-  MODIFY `id` int(15) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
---
--- AUTO_INCREMENT for table `tblproject_any-other-information`
---
-ALTER TABLE `tblproject_any-other-information`
-  MODIFY `ID` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
---
--- AUTO_INCREMENT for table `tblproject_awards-and-honors`
---
-ALTER TABLE `tblproject_awards-and-honors`
-  MODIFY `ID` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
---
--- AUTO_INCREMENT for table `tblproject_books-chapters-technical-papers`
---
-ALTER TABLE `tblproject_books-chapters-technical-papers`
-  MODIFY `ID` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
---
--- AUTO_INCREMENT for table `tblproject_conference-papers`
---
-ALTER TABLE `tblproject_conference-papers`
-  MODIFY `ID` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
---
--- AUTO_INCREMENT for table `tblproject_journal-publications`
---
-ALTER TABLE `tblproject_journal-publications`
-  MODIFY `ID` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
---
--- AUTO_INCREMENT for table `tblproject_patents`
---
-ALTER TABLE `tblproject_patents`
-  MODIFY `ID` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
---
--- AUTO_INCREMENT for table `tblproject_project-staff`
---
-ALTER TABLE `tblproject_project-staff`
-  MODIFY `ID` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
---
--- AUTO_INCREMENT for table `tblproject_workshop-seminar-attended`
---
-ALTER TABLE `tblproject_workshop-seminar-attended`
-  MODIFY `ID` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
---
--- AUTO_INCREMENT for table `tblproject_workshop-seminar-conference-organized`
---
-ALTER TABLE `tblproject_workshop-seminar-conference-organized`
-  MODIFY `ID` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
---
--- AUTO_INCREMENT for table `tblstudentqualification`
---
-ALTER TABLE `tblstudentqualification`
-  MODIFY `QID` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
---
--- AUTO_INCREMENT for table `tblteacher_administrative-posts-positions-held`
---
-ALTER TABLE `tblteacher_administrative-posts-positions-held`
-  MODIFY `ID` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
---
--- AUTO_INCREMENT for table `tblteacher_any-other-information`
---
-ALTER TABLE `tblteacher_any-other-information`
-  MODIFY `ID` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
---
--- AUTO_INCREMENT for table `tblteacher_awards-and-honors`
---
-ALTER TABLE `tblteacher_awards-and-honors`
-  MODIFY `ID` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
---
--- AUTO_INCREMENT for table `tblteacher_books-chapters-technical-papers`
---
-ALTER TABLE `tblteacher_books-chapters-technical-papers`
-  MODIFY `ID` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
---
--- AUTO_INCREMENT for table `tblteacher_conference-papers`
---
-ALTER TABLE `tblteacher_conference-papers`
-  MODIFY `ID` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
---
--- AUTO_INCREMENT for table `tblteacher_educational-qualifications`
---
-ALTER TABLE `tblteacher_educational-qualifications`
-  MODIFY `ID` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
---
--- AUTO_INCREMENT for table `tblteacher_examinership-supervision-of-dissertation-projects-phd`
---
-ALTER TABLE `tblteacher_examinership-supervision-of-dissertation-projects-phd`
-  MODIFY `ID` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
---
--- AUTO_INCREMENT for table `tblteacher_funded-projects`
---
-ALTER TABLE `tblteacher_funded-projects`
-  MODIFY `ID` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
---
--- AUTO_INCREMENT for table `tblteacher_journal-publications`
---
-ALTER TABLE `tblteacher_journal-publications`
-  MODIFY `ID` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
---
--- AUTO_INCREMENT for table `tblteacher_membership-of-learned-professional-technical-bodies`
---
-ALTER TABLE `tblteacher_membership-of-learned-professional-technical-bodies`
-  MODIFY `ID` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
---
--- AUTO_INCREMENT for table `tblteacher_other-teaching-research-administrative-activities`
---
-ALTER TABLE `tblteacher_other-teaching-research-administrative-activities`
-  MODIFY `ID` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
---
--- AUTO_INCREMENT for table `tblteacher_patents`
---
-ALTER TABLE `tblteacher_patents`
-  MODIFY `ID` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
---
--- AUTO_INCREMENT for table `tblteacher_project-submitted-for-funding`
---
-ALTER TABLE `tblteacher_project-submitted-for-funding`
-  MODIFY `ID` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
---
--- AUTO_INCREMENT for table `tblteacher_work-experience`
---
-ALTER TABLE `tblteacher_work-experience`
-  MODIFY `ID` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
---
--- AUTO_INCREMENT for table `tblteacher_workshop-seminar-attended`
---
-ALTER TABLE `tblteacher_workshop-seminar-attended`
-  MODIFY `ID` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
---
--- AUTO_INCREMENT for table `tblteacher_workshop-seminar-conference-organized`
---
-ALTER TABLE `tblteacher_workshop-seminar-conference-organized`
-  MODIFY `ID` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
---
--- AUTO_INCREMENT for table `users`
---
-ALTER TABLE `users`
-  MODIFY `id` int(15) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=135;COMMIT;
+ALTER TABLE `ug_curriculum_cobt`
+  MODIFY `id` int(15) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

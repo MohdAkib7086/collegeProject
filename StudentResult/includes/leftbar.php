@@ -39,9 +39,20 @@
                     <a href="#"><i class="fa fa-users"></i> <span>Staff</span> <i
                             class="fa fa-angle-right arrow"></i></a>
                     <ul class="child-nav">
-                        <li><a href="add-students.php"><i class="fa fa-bars"></i> <span>Add Staff</span></a></li>
-                        <li><a href="manage-students.php"><i class="fa fa fa-server"></i> <span>Manage
+                        <li><a href="add-staff.php"><i class="fa fa-bars"></i> <span>Add Staff</span></a></li>
+                        <li><a href="manage-staff.php"><i class="fa fa fa-server"></i> <span>Manage
                                     Staff personal information</span></a>
+                        </li>
+                    </ul>
+                </li>
+             <!-- connect the course offered for computer engineering depaetment -->
+                <li class="has-children">
+                    <a href="#"><i class="fa fa-users"></i> <span>Course</span> <i
+                            class="fa fa-angle-right arrow"></i></a>
+                    <ul class="child-nav">
+                        <li><a href="add-course.php"><i class="fa fa-bars"></i> <span>Add Course Details</span></a></li>
+                        <li><a href="manage-Course.php"><i class="fa fa fa-server"></i> <span>Manage
+                                    Courrse Information </span></a>
                         </li>
                     </ul>
                 </li>

@@ -39,70 +39,28 @@ echo "<script type='text/javascript'> document.location = 'dashboard.php'; </scr
         <link rel="stylesheet" href="css/bootstrap.min.css" media="screen" >
         <link rel="stylesheet" href="css/font-awesome.min.css" media="screen" >
         <link rel="stylesheet" href="css/animate-css/animate.min.css" media="screen" >
-        <link rel="stylesheet" href="css/prism/prism.css" media="screen" > <!-- USED FOR DEMO HELP - YOU CAN REMOVE IT -->
-        <link rel="stylesheet" href="css/main.css" media="screen" >
+        <link rel="stylesheet" href="css/main.css" media="screen" > 
         <script src="js/modernizr/modernizr.min.js"></script>
+        <style>
+            .admin{
+                width:40%;
+                margin:auto;
+            }
+        </style>
+
     </head>
-    <body class="">
+    <body>
         <div class="main-wrapper">
 
             <div class="">
                 <div class="row">
                    <h1 align="center">Acreditation Management System</h1>
                    
-<!-- student section  -->
-                 <!-- <div class="col-lg-6 visible-lg-block">                        
-                 <section class="section">
-                            <div class="row mt-40">
-                                <div class="col-md-10 col-md-offset-1 pt-50">
-
-                                    <div class="row mt-30 ">
-                                        <div class="col-md-11">
-                                            <div class="panel">
-                                                <div class="panel-heading">
-                                                    <div class="panel-title text-center">
-                                                        <h4>For Students</h4>
-                                                    </div>
-                                                </div>
-                                                <div class="panel-body p-20">
-
-                                                    <div class="section-title">
-                                                        <p class="sub-title">Student Result Management System</p>
-                                                    </div>
-
-                                                    <form class="form-horizontal" method="post">
-                                                        <div class="form-group">
-                                                            <label for="inputEmail3" class="col-sm-6 control-label">Search your result</label>
-                                                            <div class="col-sm-6">
-                                                               <a href="find-result.php">click here</a>
-                                                            </div>
-                                                        </div>
-
-                                                    </form>
-
-
-
-
-                                                </div>
-                                            </div>
-                                            
-
-                                        </div>
-                                        /.col-md-11
-                                    <!-- </div> -->
-                                    <!-- /.row -->
-                                <!-- </div> -->
-                                <!-- /.col-md-12 -->
-                            <!-- </div> -->
-                            <!-- /.row -->
-                        <!-- </section> -->
-                    <!-- </div> --> --> -->
                     <!-- admin section  -->
-                    <div class="col-lg-6" >
+                    <div class="admin" >
                         <section class="section">
                             <div class="row mt-40">
                                 <div class="col-md-10 col-md-offset-1 pt-50">
-
                                     <div class="row mt-30 ">
                                         <div class="col-md-11">
                                             <div class="panel">
@@ -114,7 +72,7 @@ echo "<script type='text/javascript'> document.location = 'dashboard.php'; </scr
                                                 <div class="panel-body p-20">
 
                                                     <div class="section-title">
-                                                        <p class="sub-title">Student Result Management System</p>
+                                                        <p class="sub-title">Accreditation Management System</p>
                                                     </div>
 
                                                     <form class="form-horizontal" method="post">
@@ -188,3 +146,5 @@ echo "<script type='text/javascript'> document.location = 'dashboard.php'; </scr
         <!-- ========== ADD custom.js FILE BELOW WITH YOUR CHANGES ========== -->
     </body>
 </html>
+
+

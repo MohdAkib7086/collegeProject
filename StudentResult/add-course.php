@@ -34,7 +34,7 @@
           <div class="container-fluid">
             <div class="row page-title-div">
               <div class="col-md-6">
-                <h2 class="title">staff personal Information</h2>
+                <h2 class="title">Course Details</h2>
               </div>
 
               <!-- /.col-md-6 text-right -->
