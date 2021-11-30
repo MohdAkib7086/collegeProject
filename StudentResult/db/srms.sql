@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 16, 2021 at 07:47 AM
+-- Generation Time: Nov 30, 2021 at 02:03 PM
 -- Server version: 10.4.20-MariaDB
 -- PHP Version: 8.0.9
 
@@ -44,6 +44,30 @@ INSERT INTO `admin` (`id`, `UserName`, `Password`, `updationDate`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `placement_record`
+--
+
+CREATE TABLE `placement_record` (
+  `id` int(15) NOT NULL,
+  `student_name` varchar(50) NOT NULL,
+  `faculty_no` varchar(20) NOT NULL,
+  `discipline` varchar(20) NOT NULL,
+  `year_of_passing` varchar(4) NOT NULL,
+  `on_off_campus` varchar(15) NOT NULL,
+  `company_name` varchar(50) NOT NULL,
+  `ctc` varchar(15) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `placement_record`
+--
+
+INSERT INTO `placement_record` (`id`, `student_name`, `faculty_no`, `discipline`, `year_of_passing`, `on_off_campus`, `company_name`, `ctc`) VALUES
+(1, 'MOHD Akib', '19COB034', 'cse', '2022', 'on campus', 'google', '20lakh');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `projects`
 --
 
@@ -74,46 +98,44 @@ CREATE TABLE `projects` (
 
 CREATE TABLE `staff` (
   `id` int(15) NOT NULL,
-  `staff_id` varchar(20) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
-  `full_name` varchar(30) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
-  `father_name` varchar(30) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
-  `mother_name` varchar(30) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
-  `designation` varchar(30) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
-  `sex` varchar(30) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
-  `branch` varchar(50) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
-  `religion` varchar(50) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
-  `date_of_birth` date NOT NULL DEFAULT '0000-00-00',
-  `year_of_join` varchar(4) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
-  `TotalExperience` varchar(10) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
-  `AreaOfInterest` varchar(100) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
-  `NumberOfPublications` varchar(10) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
-  `NumberOfPapers` varchar(10) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
-  `Email` varchar(50) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
-  `OfficeAddress` varchar(50) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
-  `OfficeCity` varchar(50) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
-  `OfficeState` varchar(50) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
-  `OfficePin` varchar(50) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
-  `OfficeTelephone` varchar(50) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
-  `OfficeMobile` varchar(50) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
-  `ResidenceAddress` varchar(50) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
-  `ResidenceCity` varchar(50) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
-  `ResidenceState` varchar(50) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
-  `ResidencePin` varchar(50) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
-  `ResidenceTelephone` varchar(50) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
-  `ResidenceMobile` varchar(50) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
-  `PermanentAddress` varchar(50) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
-  `PermanentCity` varchar(50) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
-  `PermanentState` varchar(50) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
-  `PermanentPin` varchar(50) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
-  `PermanentTelephone` varchar(50) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
-  `PermanentMobile` varchar(50) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
-  `OfficeCountry` varchar(50) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
-  `ResidenceCountry` varchar(50) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
-  `PermanentCountry` varchar(50) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
-  `status` tinyint(1) NOT NULL DEFAULT 0,
-  `username` varchar(50) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
-  `password` varchar(50) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+  `staff_id` varchar(20) NOT NULL,
+  `full_name` varchar(40) NOT NULL,
+  `father_name` varchar(40) NOT NULL,
+  `mother_name` varchar(40) NOT NULL,
+  `designation` varchar(100) NOT NULL,
+  `sex` varchar(30) NOT NULL,
+  `branch` varchar(50) NOT NULL,
+  `religion` varchar(20) NOT NULL,
+  `date_of_birth` date NOT NULL,
+  `year_of_join` date NOT NULL,
+  `TotalExperience` varchar(20) NOT NULL,
+  `AreaOfInterest` varchar(100) NOT NULL,
+  `NumberOfPublications` varchar(10) NOT NULL,
+  `NumberOfPapers` varchar(10) NOT NULL,
+  `Email` varchar(50) NOT NULL,
+  `OfficeAddress` varchar(100) NOT NULL,
+  `OfficeCity` varchar(50) NOT NULL,
+  `OfficePin` varchar(50) NOT NULL,
+  `OfficeTelephone` varchar(50) NOT NULL,
+  `OfficeMobile` varchar(50) NOT NULL,
+  `Address` varchar(100) NOT NULL,
+  `City` varchar(30) NOT NULL,
+  `State` varchar(30) NOT NULL,
+  `Pin` varchar(20) NOT NULL,
+  `Telephone` varchar(30) NOT NULL,
+  `Mobile` varchar(30) NOT NULL,
+  `Country` varchar(30) NOT NULL,
+  `status` tinyint(1) NOT NULL,
+  `UserName` varchar(50) NOT NULL,
+  `Password` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `staff`
+--
+
+INSERT INTO `staff` (`id`, `staff_id`, `full_name`, `father_name`, `mother_name`, `designation`, `sex`, `branch`, `religion`, `date_of_birth`, `year_of_join`, `TotalExperience`, `AreaOfInterest`, `NumberOfPublications`, `NumberOfPapers`, `Email`, `OfficeAddress`, `OfficeCity`, `OfficePin`, `OfficeTelephone`, `OfficeMobile`, `Address`, `City`, `State`, `Pin`, `Telephone`, `Mobile`, `Country`, `status`, `UserName`, `Password`) VALUES
+(4, '12345', 'MOHD Akib', '', '', 'associate professor', '', '', '', '2021-11-19', '2021-11-18', '', '', '', '', 'abcd@gmail.com', '', '', '', '', '', '', '', '', '', '', '', '', 0, '12345', '$2y$10$I9C8gCzqqV3Srstljzj4ief3zBaXLgRwq1RJjIEGjOzJepOwUwkeK');
 
 -- --------------------------------------------------------
 
@@ -159,12 +181,7 @@ CREATE TABLE `students` (
 --
 
 INSERT INTO `students` (`id`, `sl_no`, `faculty_no`, `enrolment_no`, `full_name`, `father_name`, `mother_name`, `sex`, `branch`, `religion`, `date_of_birth`, `special_category`, `course_name`, `state`, `nationality`, `exam_passed`, `hall_assigned`, `room_no`, `per_address1`, `per_city`, `per_pin`, `per_telephone`, `per_mobile`, `status`, `cor_address1`, `cor_city`, `cor_pin`, `cor_telephone`, `cor_mobile`, `city`) VALUES
-(2, 'akib khan', '19COB034', 'GL3120', 'MOHD AKIB', '', '', '', '', '', '0000-00-00', 'General', '', '', '', '', '', '', '', '', '', '', '', '0', '', '', '', '9838131377', '', ''),
-(5, 'islamasdgas', 'fasdfa', 'asdfadsdf', 'asdgasdf', 'asdgasdg', 'asdgfasdfg', 'Malw', '', '', '2021-11-16', 'General', '', '', '', '', '', '', '', '', '', '', '', '0', 'enter address', '', '', '', '', ''),
-(6, 'king kha', '19cob043', 'asg', '', '', '', 'Malw', '', '', '0000-00-00', 'General', '', '', '', '', '', '', 'asdgasgdsadg', '', '', '', '', '0', 'enter aadsfadfasfasdfsadfddress', '', '', '', '', ''),
-(7, 'asgasdgsd', 'sagdasdgf', 'asdfsadf', '', '', '', '', '', '', '0000-00-00', 'General', '', '', '', '', '', '', '', 'sadfsadf', 'asgsag', '1232456789', '9838131377', '0', 'enter address', '', '', '', '', ''),
-(8, '23', '19cob045', 'gl4530', 'MOHD AKIB', '', '', '', '', '', '0000-00-00', 'General', '', '', '', '', '', '', '', '', '', '', '', '0', 'enter address', '', '', '9838131377', '', ''),
-(9, '35', '19cob035', 'gl3140', 'alkama hassan', 'hassan', 'asdf', 'Malw', 'cs', 'ISLAM', '2021-11-09', 'GENERAL', 'b.tech', 'Bihar', 'India', '', '', '', 'aligarh', 'aligarh', '27220010', '2223444', '1234567890', '0', 'patna bihar ', 'patana', '272126', '12345678', '1234567890', '');
+(0, '52', 'asdf4530', 'gj3540', 'MOHD Akib', 'hassan', 'noora', '', '', '', '0000-00-00', 'General', '', '', '', '', '', '', '', '', '', '', '', '0', '', '', '', '', '', '');
 
 -- --------------------------------------------------------
 
@@ -674,6 +691,12 @@ ALTER TABLE `admin`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `placement_record`
+--
+ALTER TABLE `placement_record`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `projects`
 --
 ALTER TABLE `projects`
@@ -710,10 +733,16 @@ ALTER TABLE `ug_curriculum_cobt`
 --
 
 --
--- AUTO_INCREMENT for table `students`
+-- AUTO_INCREMENT for table `placement_record`
 --
-ALTER TABLE `students`
-  MODIFY `id` int(15) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+ALTER TABLE `placement_record`
+  MODIFY `id` int(15) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT for table `staff`
+--
+ALTER TABLE `staff`
+  MODIFY `id` int(15) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `ug_curriculum_cobt`

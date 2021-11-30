@@ -1,3 +1,7 @@
+<?php
+session_start();
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -17,6 +21,49 @@
 </head>
 
 <body class="top-navbar-fixed">
+<?php
+// error_reporting(0);
+// include('includes/config.php');
+include 'connection.php';
+// include('connection.php');
+if(isset($_POST['submit'])){
+  
+  $name=$_POST['name'];
+  $staffID=$_POST['staffID'];
+  $DOB=$_POST['DOB'];
+  $email=$_POST['email'];
+  $DOJ=$_POST['DOJ'];
+  $designation=$_POST['designation'];
+  $username=$_POST['staffID'];
+  $password=$_POST['staffID'];
+  
+  
+  $pass=password_hash($password,PASSWORD_BCRYPT);
+
+  $insertquery="insert into staff(full_name,staff_id,date_of_birth,
+  Email,year_of_join,designation,username,password) 
+     VALUES('$name','$staffID','$DOB','$email','$DOJ','$designation','$username','$pass')";
+
+     $res = mysqli_query($con,$insertquery);
+
+    if($res){
+      ?>
+      <script>
+        alert("data inserted properly");
+      </script>
+      <?php
+    }else {
+      ?>
+      <script>
+        alert("data not inserted");
+      </script>
+      <?php
+    }
+ 
+}
+
+?>
+
   <div class="main-wrapper">
 
     <!-- ========== TOP NAVBAR ========== -->
@@ -53,101 +100,58 @@
 
             <!-- /.row -->
           </div>
-          <div class="container-fluid">
-
-            <div class="row">
-              <div class="col-md-12">
-                <div class="panel">
-                  <div class="panel-heading">
-                    <div class="panel-title">
-                      <h5>Fill the Staff Info</h5>
+          <div class="container"> <div class=" text-center mt-5 ">
+        <h1>Staff adding form</h1>
+    </div>
+    <div class="row ">
+        <div class="col-lg-7 mx-auto">
+            <div class="card mt-2 mx-auto p-4 bg-light">
+                <div class="card-body bg-light">
+                    <div class="container">
+                        <form action="add-staff.php" method="POST">
+                            <div class="controls">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group"> <label for="fullname">FullName *</label> <input id="fullname" type="text" name="name" class="form-control" placeholder="Please enter FullName *" required="required"> </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group"> <label for="staff-id">staff ID *</label> <input id="staff-id" type="text" name="staffID" class="form-control" placeholder="Please enter staff ID *" required="required" > </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group"> <label for="DOB">DOB</label> <input id="DOB" type="date" name="DOB" class="form-control" placeholder="Date of birth " > </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group"> <label for="email">Eamil-ID</label> <input id="email" type="email" name="email" class="form-control" placeholder="Enter email id " > </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group"> <label for="DOJ">date of joining </label> <input id="DOJ" type="date" name="DOJ" class="form-control" placeholder="Date of joing "> </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group"> <label for="designation">Designation </label> <input id="designation" type="text" name="designation" class="form-control" placeholder="Please enter staff ID " > </div>
+                                    </div>
+                                    
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-4">
+                                    </div>
+                                    <div class="col-md-4">
+                                       <input type="submit" name="submit" class="btn btn-success btn-send pt-2 btn-block " value="ADD Staff"> 
+                                    </div>
+                                    <div class="col-md-4">
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
                     </div>
-
-                    <!-- staff info form  -->
-                    <form>
-                      <div class="form-row">
-                        <div class="col-md-4 mb-3">
-                          <input type="text" class="form-control" placeholder="Staff Id" required>
-                        </div>
-                        <div class="col-md-4 mb-3">
-                          <input type="text" class="form-control" placeholder="Full Name " required>
-                        </div>
-                        <div class="col-md-4 mb-3">
-                          <input type="text" class="form-control" placeholder="Father's Name" required>
-                        </div>
-                      </div>
-                      <div class="form-row">
-                        <div class="col-md-4 mb-3">
-                          <input type="text" class="form-control" placeholder="Mother's Name" required>
-                        </div>
-                        <div class="col-md-4 mb-3">
-                          <input type="text" class="form-control" placeholder="year of Joining" required>
-                        </div>
-                        <div class="col-md-4 mb-3">
-                          <input type="text" class="form-control" placeholder="Total Experience" required>
-                        </div>
-                      </div>
-
-                     
-                      <div class="form-row">
-                        <div class="col-md-4 mb-4">  Sex :
-                          <label class="radio-inline"><input type="radio" name="optradio" checked>Male </label>
-                          <label class="radio-inline"><input type="radio" name="optradio">Female</label>
-                          <label class="radio-inline"><input type="radio" name="optradio">Others</label>
-
-                        </div>
-
-                        <div class="col-md-4">
-                          <input type="text" class="form-control" placeholder="branch" required>
-                        </div>
-                        <div class="col-md-2">
-                          <input type="text" class="form-control" placeholder="Religion" required>
-                        </div>
-                        <div class="col-md-2">
-                          <input type="date" class="form-control" placeholder="DOB" required>
-                        </div>
-                      </div>
-
-
-                      <div class="form-row">
-                        <div class="col-md-3 mb-3">
-                          <input type="text" class="form-control" placeholder="special Category" required>
-                        </div>
-                        <div class="col-md-3">
-                          <input type="text" class="form-control" placeholder="CourseName" required>
-                        </div>
-                        <div class="col-md-3">
-                          <input type="text" class="form-control" placeholder="State" required>
-                        </div>
-                        <div class="col-md-3">
-                          <input type="text" class="form-control" placeholder="Nationality" required>
-                        </div>
-                      </div>
-
-
-
-                      <div class="form-row">
-                        <div class="col-md-3 mb-3">
-                          <label for="comment">Permanent Address1:</label>
-                          <textarea class="form-control" rows="5" id="comment"></textarea>
-                        </div>
-                        <div class="col-md-3 mb-3">
-                          <label for="comment">Corresponding Address2:</label>
-                          <textarea class="form-control" rows="5" id="comment"></textarea>
-                        </div>
-                      </div>
-
-                      <div class="col-md-3 mb-3">
-                        <input type="submit" >
-                      </div>
-
-                    </form>
-                  </div>
                 </div>
-              </div>
-              <!-- /.col-md-12 -->
-            </div>
-          </div>
+            </div> <!-- /.8 -->
+        </div> <!-- /.row-->
+    </div>
+</div>
         </div>
         <!-- /.content-container -->
       </div>

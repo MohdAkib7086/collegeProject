@@ -57,6 +57,16 @@
                     </ul>
                 </li>
 
+                <li class="has-children">
+                    <a href="#"><i class="fa fa-users"></i> <span>Placement</span> <i
+                            class="fa fa-angle-right arrow"></i></a>
+                    <ul class="child-nav">
+                        <li><a href="add-placement.php"><i class="fa fa-bars"></i> <span>Add record</span></a></li>
+                        <li><a href="placement-record.php"><i class="fa fa fa-server"></i> <span>view record</span></a>
+                        </li>
+                    </ul>
+                </li>
+
                 <li><a href="change-password.php"><i class="fa fa fa-server"></i> <span>Admin Change Password</span></a></li>
             </ul>
         </div>
