@@ -1,3 +1,5 @@
+<!-- code for admin login  -->
+
 <?php  
 session_start();
 error_reporting(0);
@@ -41,7 +43,8 @@ echo "<script type='text/javascript'> document.location = 'dashboard.php'; </scr
 
         $email_count = mysqli_num_rows($query);
 
-        if($email_count){
+        if($email_count)
+        {
             $email_pass=mysqli_fetch_assoc($query);
 
             $db_pass = $email_pass['Password'];
@@ -49,15 +52,27 @@ echo "<script type='text/javascript'> document.location = 'dashboard.php'; </scr
 
             $pass_decode = password_verify($password,$db_pass);
 
-            if($pass_decode){
+            if($pass_decode)
+            {
                 header('location:dashboard-staff.php');
-              }
-             else{
-                echo "password incorrect";
+            }
+             else
+            {
+               ?>
+               <script>
+                alert("password incorrect");
+                </script>
+                <?php
             }
 
-        }else{
-            echo "invalid username";
+        }
+        else
+        {
+            ?>
+            <script>
+            alert("invalid username");
+            </script>
+            <?php
         }
     }
 
@@ -95,7 +110,7 @@ echo "<script type='text/javascript'> document.location = 'dashboard.php'; </scr
 <body>
     <h1 align="center">Accreditation Management System</h1>
     <div align="center">
-    <img  src="img/logo.png" >
+    <img  src="image/logo.png" >
     </div>
 <div class="container login-container">
             <div class="row main" id="firstdiv">

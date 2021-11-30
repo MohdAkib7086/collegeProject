@@ -41,7 +41,7 @@ if(isset($_POST['submit'])){
   $pass=password_hash($password,PASSWORD_BCRYPT);
 
   $insertquery="insert into staff(full_name,staff_id,date_of_birth,
-  Email,year_of_join,designation,username,password) 
+  Email,year_of_join,designation,UserName,Password) 
      VALUES('$name','$staffID','$DOB','$email','$DOJ','$designation','$username','$pass')";
 
      $res = mysqli_query($con,$insertquery);

@@ -3,7 +3,7 @@
                     <div class="row">
                         <div class="navbar-header no-padding">
                 			<a class="navbar-brand" href="dashboard.php">
-                			    SRMS | Admin
+                			    AMS | Admin
                 			</a>
                             <span class="small-nav-handle hidden-sm hidden-xs"><i class="fa fa-outdent"></i></span>
                 			<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse-1" aria-expanded="false">
@@ -21,7 +21,7 @@
                                 <li class="hidden-sm hidden-xs"><a href="#" class="user-info-handle"><i class="fa fa-user"></i></a></li>
                                 <li class="hidden-sm hidden-xs"><a href="#" class="full-screen-handle"><i class="fa fa-arrows-alt"></i></a></li>
                        
-                				<li class="hidden-xs hidden-xs"><!-- <a href="#">My Tasks</a> --></li>
+                				<!-- <li class="hidden-xs hidden-xs"><a href="#">My Tasks</a></li> -->
                                
                 			</ul>
                             <!-- /.nav navbar-nav -->
